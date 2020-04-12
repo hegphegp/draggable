@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <style>
+  .item {
+	margin-top: 5px;
+    width: 80px;
+    height: 30px;
+    background: #ccc;
+  }
+  .container {
+    left: 250px;
+    top: 0;
+	border:1px solid;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+  }
+ /** 拖拽时产生虚线的配置 */
+  .ui-sortable-placeholder { outline: 1px dashed #ddd;visibility: visible!Important; border-radius: 4px; }
+  </style>
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+</head>
+<body>
+ 
+<div class="container"></div><br>
+<div class="item">请拖拽我！</div>
+ 
+<script>
+$( ".container" ).sortable({});
+$( ".item" ).draggable({
+	connectToSortable: ".container",
+   helper: "clone",
+});
+$( ".container" ).droppable({
+	handle: ".drag",
+  over: function( event, ui ) {
+    $(this).css('border','1px dotted red');
+  },
+ out: function( event, ui ) {
+    $(this).css('border','1px solid');
+  },
+  drop: function(e, t) {
+    $(this).css('border','1px solid');
+        $(".item").sortable({
+        opacity: .35,
+        connectWith: ".container"
+     })
+  }
+});
+</script>
+ 
+</body>
+</html>
