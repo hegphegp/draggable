@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" style="height: 100%; ">
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+  <link href="https://www.layuicdn.com/layui-v2.5.6/css/layui.css" rel="stylesheet">
+  <style>
+  .drag-item-list .drag-item {
+    margin: 0 7px 10px 0;
+  }
+  .drag-item {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+ /** 拖拽时产生虚线的配置 */
+  .ui-sortable-placeholder { outline: 1px dashed #ddd;visibility: visible!Important; border-radius: 4px; }
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body style="height: 100%; ">
+<div class="container" style="height: 100%; ">
+  <div class="layui-col-xs2 layui-col-md2 layui-col-bg2" style="height: 95%; border: 1px solid red; padding: 2px;">
+    <div class="drag-item">div</div>
+    
+  </div>
+  <div class="layui-col-xs8 layui-col-md8 layui-col-bg8 drag-container" style="height: 95%; border: 1px solid green;">
+    13
+  </div>
+  <div class="layui-col-xs2 layui-col-md2 layui-col-bg2" style="height: 95%; border: 1px solid blue; background-color: #63BA79;">
+    14
+  </div>
+</div>
+<script>
+$(".drag-container").sortable({});
+$(".drag-item").draggable({
+  connectToSortable: ".drag-container",
+   helper: "clone"
+});
+$( ".drag-container" ).droppable({
+  handle: ".drag",
+  over: function( event, ui ) {
+    $(this).css('border','1px dotted red');
+  },
+ out: function( event, ui ) {
+    $(this).css('border','1px solid');
+  },
+  drop: function(e, t) {
+    $(this).css('border','1px solid');
+        $(".item").sortable({
+        opacity: .35,
+        connectWith: ".container"
+     })
+  }
+});
+</script>
+</body>
+</html>
