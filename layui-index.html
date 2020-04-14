@@ -6,9 +6,24 @@
   <link href="https://www.layuicdn.com/layui-v2.5.6/css/layui.css" rel="stylesheet">
   <style>
   .drag-item-list .drag-item {
-    margin: 0 7px 10px 0;
+    margin: 3px 3px 3px 3px;
+  }
+  .layui-btn {
+    margin: 3px 3px 3px 3px;
   }
   .drag-item {
+    cursor: move;
+    width: 84px;
+    float: left;
+    text-align: center;
+    line-height: 26px;
+    background: #33383E;
+    border: 1px solid #33383E;
+    font-size: 12px;
+    color: #ffffe6 !important;
+    letter-spacing: 0;
+  }
+/*  .drag-item {
     display: block;
     height: 38px;
     line-height: 38px;
@@ -21,7 +36,7 @@
     border: none;
     border-radius: 2px;
     cursor: pointer;
-  }
+  }*/
  /** 拖拽时产生虚线的配置 */
   .ui-sortable-placeholder { outline: 1px dashed #ddd;visibility: visible!Important; border-radius: 4px; }
   </style>
@@ -30,9 +45,54 @@
 </head>
 <body style="height: 100%; ">
 <div class="container" style="height: 100%; ">
-  <div class="layui-col-xs2 layui-col-md2 layui-col-bg2" style="height: 95%; border: 1px solid red; padding: 2px;">
-    <div class="drag-item">div</div>
-    
+  <div class="layui-col-xs2 layui-col-md2 layui-col-bg2 drag-item-list" style="height: 95%; border: 1px solid red; padding: 2px;">
+    <fieldset class="layui-elem-field">
+      <legend>控件</legend>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+      <div class="drag-item">数据集图</div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+      <legend>控件</legend>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+      <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">小型按钮</button>
+    </fieldset>
   </div>
   <div class="layui-col-xs8 layui-col-md8 layui-col-bg8 drag-container" style="height: 95%; border: 1px solid green;">
     13
@@ -52,7 +112,7 @@ $( ".drag-container" ).droppable({
   over: function( event, ui ) {
     $(this).css('border','1px dotted red');
   },
- out: function( event, ui ) {
+  out: function( event, ui ) {
     $(this).css('border','1px solid');
   },
   drop: function(e, t) {
