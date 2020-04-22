@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./libs/jqueryui/1.12.1/jquery-ui.min.css">
     <style>
         .item {
-	          margin-top: 5px;
+            margin-top: 5px;
             width: 120px;
             height: 30px;
             background: #ccc;
@@ -14,10 +14,14 @@
         .container {
             left: 250px;
             top: 0;
-	          border:1px solid;
+            border:1px solid;
             width: 200px;
             height: 200px;
             padding: 10px;
+        }
+
+        .addColor {
+            background: chartreuse;
         }
         /** 拖拽时产生虚线的配置 */
         .ui-sortable-placeholder { outline: 1px dashed #ddd;visibility: visible!Important; border-radius: 4px; }
@@ -32,15 +36,29 @@
 <div class="item" id="newStyle">拖拽我！新样子</div>
 <script>
 $(".item").draggable({
-	   connectToSortable: ".container",
-     helper: "clone",
+    connectToSortable: ".container",
+    helper: "clone",
+    // start: function(e, t) {
+    //     console.log(e);
+    //     console.log(t);
+    //     $(e.delegateTarget).addClass("addColor");
+    //     // console.log(this);
+    // },
+    helper: function( event ) {
+        // console.log(event.target.id);
+        if(event.target.id=="oldStyle") {
+            return $("<div class='item'>拖拽我！新样子</div>");
+        } else {
+            return $("<div class='item addColor'>拖拽我！新样子</div>");
+        }
+      }
 });
 
 // 在container里面的控件可以拖拽排序
 $(".container").sortable({});
 
 $(".container").droppable({
-	  handle: ".drag",
+    handle: ".drag",
     over: function( event, ui ) {
         $(this).css('border','1px dotted red');
     },
